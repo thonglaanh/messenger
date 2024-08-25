@@ -14,7 +14,7 @@ class MyApp extends ConsumerWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutePage.onGenerateRoute,
-      initialRoute: RouteName.login,
+      initialRoute: RouteName.root,
     );
   }
 }

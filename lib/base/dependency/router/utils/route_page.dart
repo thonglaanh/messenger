@@ -13,4 +13,20 @@ class RoutePage {
         return RouteScreen.unknownPageRoute(settings);
     }
   }
+
+  static Route<dynamic>? onGenerateHomeRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RouteName.home:
+        return RouteScreen.homePageRoute(settings);
+    }
+    return RouteScreen.unknownPageRoute(settings);
+  }
+
+  static Route<dynamic>? onGenerateFriendsRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RouteName.friends:
+        return RouteScreen.friendsPageRoute(settings);
+    }
+    return RouteScreen.unknownPageRoute(settings);
+  }
 }
