@@ -7,4 +7,5 @@ class RouteInput {
   RouteInput({required this.routeName, this.argument});
   RouteInput.root() : routeName = RouteName.root;
   RouteInput.login() : routeName = RouteName.login;
+  RouteInput.friends() : routeName = RouteName.friends;
 }
