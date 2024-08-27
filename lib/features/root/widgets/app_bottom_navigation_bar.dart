@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/bloc/bloc_provider.dart';
 import 'package:messenger/base/dependency/rx/obs_builder.dart';
+import 'package:messenger/constants/icons.dart';
 import 'package:messenger/features/root/enums/navigation_bottom_tab_enum.dart';
 
 class AppBottomNavigationBar extends ConsumerWidget {
@@ -16,28 +17,27 @@ class AppBottomNavigationBar extends ConsumerWidget {
         final selectedTab = appBloc.selectedBottomTabSubject.value;
         return BottomNavigationBar(
           elevation: 0,
-          selectedIconTheme: const IconThemeData(color: Colors.red),
-          backgroundColor: Colors.white,
           currentIndex: appBloc.selectedBottomTabSubject.value.index,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.red,
           onTap: (index) {
             appBloc.onBottomTabChange(NavigatorBottomTabEnum.values[index]);
           },
           items: [
             BottomNavigationBarItem(
               icon: selectedTab == NavigatorBottomTabEnum.home
-                  ? Container()
-                  : Container(),
-              label: 'home',
+                  ? IconConstants.messenger
+                  : IconConstants.messengerUnFocus,
+              label: '',
             ),
             BottomNavigationBarItem(
               icon: selectedTab == NavigatorBottomTabEnum.friends
-                  ? Container()
-                  : Container(),
-              label: 'friends',
+                  ? IconConstants.friends
+                  : IconConstants.friendsUnFocus,
+              label: '',
             ),
           ],
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
         );
       },
     );
