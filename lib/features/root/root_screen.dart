@@ -30,13 +30,8 @@ class RootScreen extends ConsumerWidget {
               });
         }).toList(),
       ),
-      bottomNavigationBar: Theme(
-        data: ThemeData(
-          splashColor: Colors.red,
-          highlightColor: Colors.red,
-        ),
-        child: const AppBottomNavigationBar(),
-      ),
+      bottomNavigationBar:
+        const AppBottomNavigationBar(),
     );
   }
 
