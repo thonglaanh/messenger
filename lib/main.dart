@@ -5,17 +5,14 @@ import 'package:messenger/base/dependency/app_service.dart';
 import 'package:messenger/base/dependency/router/utils/route_name.dart';
 import 'package:messenger/base/dependency/router/utils/route_page.dart';
 import 'package:messenger/firebase_options.dart';
+import 'package:messenger/shared/utilities/fcm.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    print("Firebase đã được khởi tạo thành công!");
-  } catch (e) {
-    print("Khởi tạo Firebase thất bại: $e");
-  }
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await FirebaseMessagingUtils.initNotification();
   runApp(const ProviderScope(child: MyApp()));
 }
 
