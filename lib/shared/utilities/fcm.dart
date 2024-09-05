@@ -77,5 +77,7 @@ class FirebaseMessagingUtils {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       showNotification(message);
     });
+    // final fcmToken = await FirebaseMessagingUtils.getDeviceToken();
+    // print(fcmToken);
   }
 }

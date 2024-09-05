@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:messenger/base/bloc/bloc_base.dart';
@@ -14,7 +15,7 @@ class LoginBloc extends BlocBase {
 
   final isLoadingLogin = BehaviorSubject<bool>.seeded(false);
 
-  Future<void> onHandleLogin() async {
+  Future<void> onHandleLoginWithGoogle() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? googleSignInAccount =
@@ -40,4 +41,26 @@ class LoginBloc extends BlocBase {
     isLoadingLogin.value = false;
     routerService.pushReplacement(RouteInput.root());
   }
+
+  Future<void> onHandleLoginWithFacebook() async {
+    final LoginResult result = await FacebookAuth.instance.login();
+    if (result.status != LoginStatus.success) {
+      isLoadingLogin.value = false;
+      return;
+    }
+    print(result);
+    final OAuthCredential credential =
+        FacebookAuthProvider.credential(result.accessToken!.tokenString);
+    final UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userCredential);
+    if (userCredential.user == null) {
+      isLoadingLogin.value = false;
+      return;
+    }
+    isLoadingLogin.value = false;
+    routerService.pushReplacement(RouteInput.root());
+  }
+
+  Future<void> onHandleLogout() async {}
 }
