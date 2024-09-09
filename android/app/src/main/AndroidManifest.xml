@@ -6,7 +6,7 @@
         <provider android:authorities="com.facebook.katana.provider.PlatformProvider"/>
     </queries>
     <application
-        android:label="messenger"
+        android:label="Messenger"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

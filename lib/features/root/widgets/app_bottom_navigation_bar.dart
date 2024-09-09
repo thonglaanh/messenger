@@ -25,8 +25,8 @@ class AppBottomNavigationBar extends ConsumerWidget {
           items: [
             BottomNavigationBarItem(
               icon: selectedTab == NavigatorBottomTabEnum.home
-                  ? IconConstants.messenger
-                  : IconConstants.messengerUnFocus,
+                  ? IconConstants.bubblesChat
+                  : IconConstants.bubblesChatUnFocus,
               label: '',
             ),
             BottomNavigationBarItem(

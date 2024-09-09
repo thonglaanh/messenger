@@ -48,12 +48,10 @@ class LoginBloc extends BlocBase {
       isLoadingLogin.value = false;
       return;
     }
-    print(result);
     final OAuthCredential credential =
         FacebookAuthProvider.credential(result.accessToken!.tokenString);
     final UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
-    print(userCredential);
     if (userCredential.user == null) {
       isLoadingLogin.value = false;
       return;
@@ -61,6 +59,4 @@ class LoginBloc extends BlocBase {
     isLoadingLogin.value = false;
     routerService.pushReplacement(RouteInput.root());
   }
-
-  Future<void> onHandleLogout() async {}
 }
