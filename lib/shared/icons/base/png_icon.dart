@@ -17,7 +17,7 @@ class PngIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       fit: fit,
-      'assets/icons/$assetName.png',
+      'assets/images/$assetName.png',
       width: width,
       height: height,
     );

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/shared/icons/base/png_icon.dart';
 
-class MessengerIcon extends StatelessWidget {
+class FacebookIcon extends StatelessWidget {
   final String assetName;
   final BoxFit? fit;
   final double? width;
 
-  const MessengerIcon({
+  const FacebookIcon({
     super.key,
-    this.assetName = 'messenger',
+    this.assetName = 'facebook',
     this.fit = BoxFit.cover,
     this.width,
   });

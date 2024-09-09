@@ -44,7 +44,7 @@ class FirebaseMessagingUtils {
       channelDescription: 'your_channel_description',
       importance: Importance.max,
       priority: Priority.high,
-      showWhen: false,
+      showWhen: true,
     );
 
     const DarwinNotificationDetails iOSDetails = DarwinNotificationDetails(
@@ -77,7 +77,6 @@ class FirebaseMessagingUtils {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       showNotification(message);
     });
-    // final fcmToken = await FirebaseMessagingUtils.getDeviceToken();
-    // print(fcmToken);
+     await FirebaseMessagingUtils.getDeviceToken();
   }
 }
