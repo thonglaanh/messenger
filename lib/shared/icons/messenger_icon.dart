@@ -3,13 +3,11 @@ import 'package:messenger/shared/icons/base/png_icon.dart';
 
 class MessengerIcon extends StatelessWidget {
   final String assetName;
-  final BoxFit? fit;
   final double? width;
 
   const MessengerIcon({
     super.key,
     this.assetName = 'messenger',
-    this.fit = BoxFit.cover,
     this.width,
   });
 
@@ -18,7 +16,6 @@ class MessengerIcon extends StatelessWidget {
     return PngIcon(
       assetName: assetName,
       width: width,
-      fit: fit,
     );
   }
 }

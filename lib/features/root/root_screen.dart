@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/bloc/bloc_provider.dart';
 import 'package:messenger/base/dependency/router/utils/route_page.dart';
-import 'package:messenger/base/dependency/rx/obs_builder.dart';
+import 'package:messenger/base/rx/obs_builder.dart';
 import 'package:messenger/features/root/enums/navigation_bottom_tab_enum.dart';
 import 'package:messenger/features/root/widgets/app_bottom_navigation_bar.dart';
 
@@ -30,8 +30,7 @@ class RootScreen extends ConsumerWidget {
               });
         }).toList(),
       ),
-      bottomNavigationBar:
-        const AppBottomNavigationBar(),
+      bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
 

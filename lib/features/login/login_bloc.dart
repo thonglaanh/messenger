@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:messenger/base/bloc/bloc_base.dart';
 import 'package:messenger/base/dependency/app_service.dart';
+import 'package:messenger/base/dependency/local_storage/local_storage_key.dart';
+import 'package:messenger/base/dependency/network/users/create/create_user_request_model.dart';
 import 'package:messenger/base/dependency/router/utils/route_input.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -12,6 +14,8 @@ class LoginBloc extends BlocBase {
   LoginBloc(this.ref);
 
   late final routerService = ref.watch(AppService.router);
+  late final networkService = ref.watch(AppService.network);
+  late final localStorageService = ref.watch(AppService.localStorage);
 
   final isLoadingLogin = BehaviorSubject<bool>.seeded(false);
 
@@ -38,12 +42,13 @@ class LoginBloc extends BlocBase {
       isLoadingLogin.value = false;
       return;
     }
-    isLoadingLogin.value = false;
-    routerService.pushReplacement(RouteInput.root());
+    handleRegisterUser(userCredential.user!);
   }
 
   Future<void> onHandleLoginWithFacebook() async {
-    final LoginResult result = await FacebookAuth.instance.login();
+    final LoginResult result = await FacebookAuth.instance.login(
+      loginBehavior: LoginBehavior.webOnly,
+    );
     if (result.status != LoginStatus.success) {
       isLoadingLogin.value = false;
       return;
@@ -55,6 +60,28 @@ class LoginBloc extends BlocBase {
     if (userCredential.user == null) {
       isLoadingLogin.value = false;
       return;
+    }
+    handleRegisterUser(userCredential.user!);
+  }
+
+  Future<void> handleRegisterUser(User userAuth) async {
+    final (user, err) =
+        await networkService.usersRepository.getUser(uid: userAuth.uid);
+    if (err != null) {
+      isLoadingLogin.value = false;
+      return;
+    }
+    localStorageService.put(LocalStorageKey.uid, userAuth.uid);
+    if (user == null) {
+      await networkService.usersRepository.createUser(
+        request: CreateUserRequestModel(
+          displayName: userAuth.displayName ?? '',
+          phoneNumber: userAuth.phoneNumber ?? '',
+          email: userAuth.email ?? '',
+          avatar: userAuth.photoURL,
+        ),
+        uid: userAuth.uid,
+      );
     }
     isLoadingLogin.value = false;
     routerService.pushReplacement(RouteInput.root());

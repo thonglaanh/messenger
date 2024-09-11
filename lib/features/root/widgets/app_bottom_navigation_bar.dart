@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/bloc/bloc_provider.dart';
-import 'package:messenger/base/dependency/rx/obs_builder.dart';
+import 'package:messenger/base/rx/obs_builder.dart';
 import 'package:messenger/constants/icons.dart';
 import 'package:messenger/features/root/enums/navigation_bottom_tab_enum.dart';
 

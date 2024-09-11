@@ -19,13 +19,13 @@ class IconConstants {
     width: 20,
   );
   static const facebook = FacebookIcon(
-    width: 25,
+    width: 30,
   );
   static const messenger = MessengerIcon(
-    width: 70,
+    width: 120,
   );
   static const google = GoogleIcon(
-    width: 25,
+    width: 30,
   );
 
   IconConstants._();

@@ -1,0 +1,1 @@
+enum LocalStorageKey { uid, token }
