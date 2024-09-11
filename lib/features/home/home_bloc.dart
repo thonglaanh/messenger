@@ -26,8 +26,4 @@ class HomeBloc extends BlocBase {
     );
     appBloc.selectedBottomTabSubject.value = NavigatorBottomTabEnum.home;
   }
-
-  Future<void> initialUsers() async {
-    await networkService.usersRepository.getUsers();
-  }
 }

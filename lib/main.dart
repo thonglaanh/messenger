@@ -2,10 +2,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/dependency/app_service.dart';
+import 'package:messenger/base/dependency/local_storage/local_storage_service.dart';
 import 'package:messenger/base/dependency/router/utils/route_name.dart';
 import 'package:messenger/base/dependency/router/utils/route_page.dart';
 import 'package:messenger/firebase_options.dart';
 import 'package:messenger/shared/utilities/fcm.dart';
+
+Future<void> initDependencies() async {
+  final localStorage = LocalStorageService();
+  await localStorage.initialize();
+  AppService.localStorage = Provider((ref) => localStorage);
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +21,7 @@ Future<void> main() async {
   );
   await FirebaseMessagingUtils.initNotification();
   runApp(const ProviderScope(child: MyApp()));
+  await initDependencies();
 }
 
 class MyApp extends ConsumerWidget {

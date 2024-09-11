@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:messenger/base/dependency/local_storage/local_storage_service.dart';
 import 'package:messenger/base/dependency/network/network_service.dart';
 import 'package:messenger/base/dependency/router/router_provider.dart';
 import 'package:messenger/base/dependency/router/router_service.dart';
@@ -14,5 +15,6 @@ class AppService {
   });
 
   static final network = Provider((ref) => NetworkService(ref));
+  static late Provider<LocalStorageService> localStorage;
   AppService._();
 }

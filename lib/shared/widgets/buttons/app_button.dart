@@ -17,6 +17,7 @@ class AppButton extends StatelessWidget {
   final BorderSide? border;
   final bool isLoading;
   final TextStyle? textStyle;
+  final Widget? prefix;
 
   const AppButton({
     super.key,
@@ -33,6 +34,7 @@ class AppButton extends StatelessWidget {
     this.borderRadius,
     this.isLoading = false,
     this.textStyle,
+    this.prefix,
   });
 
   @override
@@ -89,7 +91,21 @@ class AppButton extends StatelessWidget {
           },
         ),
       ),
-      child: child,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              child,
+            ],
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: prefix,
+          ),
+        ],
+      ),
     );
   }
 
