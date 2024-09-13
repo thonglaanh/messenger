@@ -20,8 +20,8 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseMessagingUtils.initNotification();
-  runApp(const ProviderScope(child: MyApp()));
   await initDependencies();
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget {

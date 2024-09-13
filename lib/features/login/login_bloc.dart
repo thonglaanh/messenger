@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -11,7 +12,6 @@ import 'package:rxdart/rxdart.dart';
 
 class LoginBloc extends BlocBase {
   final Ref ref;
-  LoginBloc(this.ref);
 
   late final routerService = ref.watch(AppService.router);
   late final networkService = ref.watch(AppService.network);
@@ -19,7 +19,23 @@ class LoginBloc extends BlocBase {
 
   final isLoadingLogin = BehaviorSubject<bool>.seeded(false);
 
+  LoginBloc(this.ref) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        checkLoggedIn();
+      },
+    );
+  }
+
+  Future<void> checkLoggedIn() async {
+    final uid = localStorageService.getString(LocalStorageKey.uid);
+    print(uid);
+    if (uid == null) return;
+    routerService.pushReplacement(RouteInput.root());
+  }
+
   Future<void> onHandleLoginWithGoogle() async {
+    isLoadingLogin.value = true;
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final GoogleSignInAccount? googleSignInAccount =
@@ -46,6 +62,7 @@ class LoginBloc extends BlocBase {
   }
 
   Future<void> onHandleLoginWithFacebook() async {
+    isLoadingLogin.value = true;
     final LoginResult result = await FacebookAuth.instance.login(
       loginBehavior: LoginBehavior.webOnly,
     );
