@@ -13,22 +13,24 @@ class RootScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appBloc = ref.watch(BlocProvider.app);
     return Scaffold(
-      body: Stack(
-        children: NavigatorBottomTabEnum.values.map((tab) {
-          return ObsBuilder(
-              streams: [
-                appBloc.selectedBottomTabSubject,
-              ],
-              builder: (context) {
-                return Offstage(
-                  offstage: tab != appBloc.selectedBottomTabSubject.value,
-                  child: Navigator(
-                    onGenerateRoute: buildRouteFactory(tab),
-                    initialRoute: tab.route,
-                  ),
-                );
-              });
-        }).toList(),
+      body: SafeArea(
+        child: Stack(
+          children: NavigatorBottomTabEnum.values.map((tab) {
+            return ObsBuilder(
+                streams: [
+                  appBloc.selectedBottomTabSubject,
+                ],
+                builder: (context) {
+                  return Offstage(
+                    offstage: tab != appBloc.selectedBottomTabSubject.value,
+                    child: Navigator(
+                      onGenerateRoute: buildRouteFactory(tab),
+                      initialRoute: tab.route,
+                    ),
+                  );
+                });
+          }).toList(),
+        ),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
     );

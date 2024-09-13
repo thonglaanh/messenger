@@ -1,10 +1,13 @@
 import 'package:messenger/constants/colors.dart';
 import 'package:messenger/shared/icons/bubbles_chat_icon.dart';
+import 'package:messenger/shared/icons/camera_icon.dart';
+import 'package:messenger/shared/icons/default_avatar_icon.dart';
 import 'package:messenger/shared/icons/facebook_icon.dart';
 import 'package:messenger/shared/icons/friends_icon.dart';
 import 'package:messenger/shared/icons/google_icon.dart';
 import 'package:messenger/shared/icons/messenger_icon.dart';
 import 'package:messenger/shared/icons/meta_icon.dart';
+import 'package:messenger/shared/icons/note_icon.dart';
 
 class IconConstants {
   static const bubblesChat = BubblesChatIcon();
@@ -27,6 +30,9 @@ class IconConstants {
   static const google = GoogleIcon(
     width: 30,
   );
+  static const defaultAvatar = DefaultAvatarIcon();
+  static const note = NoteIcon();
+  static const camera = CameraIcon();
 
   IconConstants._();
 }
