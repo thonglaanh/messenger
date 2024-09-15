@@ -1,0 +1,3 @@
+typedef RoomChatArgument = ({
+  String id,
+});

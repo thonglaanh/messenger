@@ -3,4 +3,5 @@ class RouteName {
   static const login = 'login';
   static const home = 'home';
   static const friends = 'friends';
+  static const roomChat = 'roomChat';
 }

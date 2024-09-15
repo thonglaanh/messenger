@@ -8,6 +8,9 @@ import 'package:messenger/shared/icons/google_icon.dart';
 import 'package:messenger/shared/icons/messenger_icon.dart';
 import 'package:messenger/shared/icons/meta_icon.dart';
 import 'package:messenger/shared/icons/note_icon.dart';
+import 'package:messenger/shared/icons/search_icon.dart';
+import 'package:messenger/shared/icons/sedding_icon.dart';
+import 'package:messenger/shared/icons/sent_icon.dart';
 
 class IconConstants {
   static const bubblesChat = BubblesChatIcon();
@@ -33,6 +36,9 @@ class IconConstants {
   static const defaultAvatar = DefaultAvatarIcon();
   static const note = NoteIcon();
   static const camera = CameraIcon();
+  static const search = SearchIcon();
+  static const sent = SentIcon();
+  static const sending = SendingIcon();
 
   IconConstants._();
 }
