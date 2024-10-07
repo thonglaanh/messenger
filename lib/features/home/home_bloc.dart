@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -6,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:messenger/base/bloc/bloc_base.dart';
 import 'package:messenger/base/bloc/bloc_provider.dart';
 import 'package:messenger/base/dependency/app_service.dart';
+import 'package:messenger/base/dependency/network/chats/model/chat_model.dart';
 import 'package:messenger/base/dependency/network/users/model/user_model.dart';
 import 'package:messenger/base/dependency/router/utils/route_input.dart';
 import 'package:messenger/base/dependency/router/utils/route_name.dart';
@@ -21,14 +23,21 @@ class HomeBloc extends BlocBase {
   //
   final searchController = TextEditingController();
   final listUsersSubject = BehaviorSubject<List<UserModel>>.seeded([]);
+  final listChatsSubject = BehaviorSubject<List<ChatModel>>.seeded([]);
 
   HomeBloc(this.ref) {
     _init();
   }
   Future<void> _init() async {
-    final (users, err) = await networkService.usersRepository.getUsers();
-    if (err != null || users == null) return;
+    final (users, userError) = await networkService.usersRepository.getUsers();
+    // final (chats, chatError) = await networkService.chatsRepository.getChats();
+    if (userError != null ||
+            // chatError != null ||
+            users == null
+        // || chats == null
+        ) return;
     listUsersSubject.value = users..sort((a, b) => b.status ?? false ? 1 : -1);
+    // listChatsSubject.value = chats;
   }
 
   Future<void> onHandleLogout() async {
@@ -50,9 +59,25 @@ class HomeBloc extends BlocBase {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     listUsersSubject.close();
     searchController.dispose();
+    listChatsSubject.close();
+  }
+
+  Future<void> saveUser(UserModel user) async {
+    final friend1 =
+        FirebaseFirestore.instance.collection('users').doc('friend1ID');
+    final friend2 =
+        FirebaseFirestore.instance.collection('users').doc('friend2ID');
+
+    final user = UserModel(
+      id: 'userID',
+      displayName: 'User Name',
+      friends: [],
+    );
+
+    final userDoc = FirebaseFirestore.instance.collection('users');
+    await userDoc.add(user.toJson());
   }
 }

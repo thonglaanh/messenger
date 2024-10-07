@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/dependency/firebase/firestore_service.dart';
+import 'package:messenger/base/dependency/network/chats/chats_repository.dart';
 import 'package:messenger/base/dependency/network/users/users_repository.dart';
 
 final _fireStoreService = Provider((ref) => FireStoreService());
@@ -10,4 +11,5 @@ class NetworkService {
   late final fireStoreService = ref.watch(_fireStoreService);
 
   late final usersRepository = UsersRepository(fireStoreService);
+  late final chatsRepository = ChatsRepository(fireStoreService);
 }

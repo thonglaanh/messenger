@@ -24,22 +24,22 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsetsConstants.all10,
+        contentPadding: EdgeInsetsConstants.all4,
         filled: true,
         fillColor: backgroundColor ?? ColorConstants.gray200,
         prefixIcon: prefixIcon,
         prefixIconConstraints: const BoxConstraints(
-          minWidth: 35,
-          maxWidth: 35,
+          minWidth: 40,
+          maxWidth: 40,
         ),
         hintText: hintText,
         hintStyle: AppTextStyle(
-          fontSize: 20,
+          fontSize: 16,
           color: ColorConstants.gray500,
         ),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(10),
+            Radius.circular(999),
           ),
           borderSide: BorderSide.none,
         ),

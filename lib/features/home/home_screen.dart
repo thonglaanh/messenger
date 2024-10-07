@@ -44,7 +44,7 @@ class HomeScreen extends ConsumerWidget {
                           Text(
                             'Chats',
                             style: AppTextStyle(
-                              fontSize: 30,
+                              fontSize: 20,
                               fontWeight: FontWeight.w900,
                             ),
                           ),
