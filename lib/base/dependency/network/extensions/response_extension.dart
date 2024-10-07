@@ -6,7 +6,7 @@ class ResponseExtension {
   static T? convertDocumentToModel<T>(
       DocumentSnapshot<Map<String, dynamic>>? doc, FromJson<T> fromJson) {
     if (doc != null && doc.data() != null) {
-      return fromJson(doc.data()!);
+      return fromJson({'id': doc.id}..addAll(doc.data()!));
     }
     return null;
   }
@@ -16,6 +16,8 @@ class ResponseExtension {
     if (snapshot == null) {
       return [];
     }
-    return snapshot.docs.map((doc) => fromJson(doc.data())).toList();
+    return snapshot.docs
+        .map((doc) => fromJson({'id': doc.id}..addAll(doc.data())))
+        .toList();
   }
 }

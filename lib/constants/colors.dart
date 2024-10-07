@@ -41,6 +41,8 @@ class ColorConstants {
   static const transparent = Color(0x00000000);
 
   static const green50 = Color(0xFFE9F7F0);
+  static const green300 = Color(0xFF5AD439);
+
   static const green500 = Color(0xFF1FB266);
 
   static const orange500 = Color(0xFFEAA601);

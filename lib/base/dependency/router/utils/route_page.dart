@@ -9,6 +9,8 @@ class RoutePage {
         return RouteScreen.rootPageRoute(settings);
       case RouteName.login:
         return RouteScreen.loginPageRoute(settings);
+      case RouteName.roomChat:
+        return RouteScreen.roomChatPageRoute(settings);
       default:
         return RouteScreen.unknownPageRoute(settings);
     }
