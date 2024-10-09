@@ -29,31 +29,36 @@ class LoginBloc extends BlocBase {
 
   Future<void> checkLoggedIn() async {
     final uid = localStorageService.getString(LocalStorageKey.uid);
-    print(uid);
     if (uid == null) return;
     routerService.pushReplacement(RouteInput.root());
   }
 
   Future<void> onHandleLoginWithGoogle() async {
-    isLoadingLogin.value = true;
-    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
-    if (googleSignInAccount == null) {
+    final UserCredential userCredential;
+    try {
+      isLoadingLogin.value = true;
+      FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+      if (googleSignInAccount == null) {
+        isLoadingLogin.value = false;
+        return;
+      }
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential authCredential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      userCredential = await firebaseAuth.signInWithCredential(authCredential);
+    } catch (e) {
       isLoadingLogin.value = false;
+      print('Error while login with google: $e');
       return;
     }
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
-
-    final AuthCredential authCredential = GoogleAuthProvider.credential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
-    );
-
-    final UserCredential userCredential =
-        await firebaseAuth.signInWithCredential(authCredential);
     if (userCredential.user == null) {
       isLoadingLogin.value = false;
       return;
@@ -62,18 +67,25 @@ class LoginBloc extends BlocBase {
   }
 
   Future<void> onHandleLoginWithFacebook() async {
-    isLoadingLogin.value = true;
-    final LoginResult result = await FacebookAuth.instance.login(
-      loginBehavior: LoginBehavior.webOnly,
-    );
-    if (result.status != LoginStatus.success) {
+    final UserCredential userCredential;
+    try {
+      isLoadingLogin.value = true;
+      final LoginResult result = await FacebookAuth.instance.login(
+        loginBehavior: LoginBehavior.webOnly,
+      );
+      if (result.status != LoginStatus.success) {
+        isLoadingLogin.value = false;
+        return;
+      }
+      final OAuthCredential credential =
+          FacebookAuthProvider.credential(result.accessToken!.tokenString);
+      userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
       isLoadingLogin.value = false;
+      print('Error while login with facebook: $e');
       return;
     }
-    final OAuthCredential credential =
-        FacebookAuthProvider.credential(result.accessToken!.tokenString);
-    final UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
     if (userCredential.user == null) {
       isLoadingLogin.value = false;
       return;
@@ -96,6 +108,7 @@ class LoginBloc extends BlocBase {
           phoneNumber: userAuth.phoneNumber ?? '',
           email: userAuth.email ?? '',
           avatar: userAuth.photoURL,
+          createdAt: DateTime.now(),
         ),
         uid: userAuth.uid,
       );
