@@ -1,5 +1,6 @@
 import 'package:messenger/constants/colors.dart';
-import 'package:messenger/shared/icons/back_arrow_icon.dart';
+import 'package:messenger/shared/icons/left_arrow_icon.dart';
+import 'package:messenger/shared/icons/right_arrow_icon.dart';
 import 'package:messenger/shared/icons/bubbles_chat_icon.dart';
 import 'package:messenger/shared/icons/call_video_icon.dart';
 import 'package:messenger/shared/icons/camera_icon.dart';
@@ -49,9 +50,12 @@ class IconConstants {
   static const sending = SendingIcon();
 
   static const cameraPrimary = CameraIcon(
-    color: ColorConstants.primary,
+    color: ColorConstants.blue350,
+    width:25 ,
   );
-  static const backArrow = BackArrowIcon();
+  static const leftArrow = LeftArrowIcon();
+  static const rightArrow = RightArrowIcon();
+
   static const callVideo = CallVideoIcon();
   static const phone = PhoneIcon();
   static const icon = Icon();

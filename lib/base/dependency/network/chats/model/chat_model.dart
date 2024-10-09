@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:messenger/base/dependency/network/users/model/user_model.dart';
 
 part 'chat_model.freezed.dart';
 part 'chat_model.g.dart';
@@ -10,7 +11,9 @@ class ChatModel with _$ChatModel {
     String? name,
     String? image,
     List<String>? message,
-    List<String>? participants,
+    List<UserModel>? participants,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _ChatModel;
 
   factory ChatModel.fromJson(Map<String, dynamic> json) =>

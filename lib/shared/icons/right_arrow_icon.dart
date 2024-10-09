@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/shared/icons/base/svg_icon.dart';
 
-class BackArrowIcon extends StatelessWidget {
+class RightArrowIcon extends StatelessWidget {
   final double? width;
   final String assetName;
   final Color? color;
 
-  const BackArrowIcon({
+  const RightArrowIcon({
     super.key,
     this.width,
     this.color,
-    this.assetName = 'back_arrow',
+    this.assetName = 'right_arrow',
   });
 
   @override

@@ -14,6 +14,8 @@ class CreateUserRequestModel with _$CreateUserRequestModel {
         'https://lh3.googleusercontent.com/a/ACg8ocLpZDs6ksBQqGLbA725ZVNXmHoAU6d1sK6DHEJFdbZA-dPGweI=s96-c')
     String? avatar,
     @Default([]) List<String>? friends,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _CreateUserRequestModel;
 
   factory CreateUserRequestModel.fromJson(Map<String, dynamic> json) =>

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'chat_model.dart';
+part of 'create_chat_request_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,45 +14,47 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ChatModel _$ChatModelFromJson(Map<String, dynamic> json) {
-  return _ChatModel.fromJson(json);
+CreateChatRequestModel _$CreateChatRequestModelFromJson(
+    Map<String, dynamic> json) {
+  return _CreateChatRequestModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ChatModel {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+mixin _$CreateChatRequestModel {
   String? get image => throw _privateConstructorUsedError;
-  List<String>? get message => throw _privateConstructorUsedError;
-  List<UserModel>? get participants => throw _privateConstructorUsedError;
+  List<String>? get messenger => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>?>? get participants =>
+      throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ChatModelCopyWith<ChatModel> get copyWith =>
+  $CreateChatRequestModelCopyWith<CreateChatRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ChatModelCopyWith<$Res> {
-  factory $ChatModelCopyWith(ChatModel value, $Res Function(ChatModel) then) =
-      _$ChatModelCopyWithImpl<$Res, ChatModel>;
+abstract class $CreateChatRequestModelCopyWith<$Res> {
+  factory $CreateChatRequestModelCopyWith(CreateChatRequestModel value,
+          $Res Function(CreateChatRequestModel) then) =
+      _$CreateChatRequestModelCopyWithImpl<$Res, CreateChatRequestModel>;
   @useResult
   $Res call(
-      {String? id,
+      {String? image,
+      List<String>? messenger,
       String? name,
-      String? image,
-      List<String>? message,
-      List<UserModel>? participants,
+      List<Map<String, dynamic>?>? participants,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
 
 /// @nodoc
-class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
-    implements $ChatModelCopyWith<$Res> {
-  _$ChatModelCopyWithImpl(this._value, this._then);
+class _$CreateChatRequestModelCopyWithImpl<$Res,
+        $Val extends CreateChatRequestModel>
+    implements $CreateChatRequestModelCopyWith<$Res> {
+  _$CreateChatRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,35 +64,30 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
     Object? image = freezed,
-    Object? message = freezed,
+    Object? messenger = freezed,
+    Object? name = freezed,
     Object? participants = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      messenger: freezed == messenger
+          ? _value.messenger
+          : messenger // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       participants: freezed == participants
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>?,
+              as List<Map<String, dynamic>?>?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -104,63 +101,60 @@ class _$ChatModelCopyWithImpl<$Res, $Val extends ChatModel>
 }
 
 /// @nodoc
-abstract class _$$ChatModelImplCopyWith<$Res>
-    implements $ChatModelCopyWith<$Res> {
-  factory _$$ChatModelImplCopyWith(
-          _$ChatModelImpl value, $Res Function(_$ChatModelImpl) then) =
-      __$$ChatModelImplCopyWithImpl<$Res>;
+abstract class _$$CreateChatRequestModelImplCopyWith<$Res>
+    implements $CreateChatRequestModelCopyWith<$Res> {
+  factory _$$CreateChatRequestModelImplCopyWith(
+          _$CreateChatRequestModelImpl value,
+          $Res Function(_$CreateChatRequestModelImpl) then) =
+      __$$CreateChatRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String? id,
+      {String? image,
+      List<String>? messenger,
       String? name,
-      String? image,
-      List<String>? message,
-      List<UserModel>? participants,
+      List<Map<String, dynamic>?>? participants,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
 
 /// @nodoc
-class __$$ChatModelImplCopyWithImpl<$Res>
-    extends _$ChatModelCopyWithImpl<$Res, _$ChatModelImpl>
-    implements _$$ChatModelImplCopyWith<$Res> {
-  __$$ChatModelImplCopyWithImpl(
-      _$ChatModelImpl _value, $Res Function(_$ChatModelImpl) _then)
+class __$$CreateChatRequestModelImplCopyWithImpl<$Res>
+    extends _$CreateChatRequestModelCopyWithImpl<$Res,
+        _$CreateChatRequestModelImpl>
+    implements _$$CreateChatRequestModelImplCopyWith<$Res> {
+  __$$CreateChatRequestModelImplCopyWithImpl(
+      _$CreateChatRequestModelImpl _value,
+      $Res Function(_$CreateChatRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
     Object? image = freezed,
-    Object? message = freezed,
+    Object? messenger = freezed,
+    Object? name = freezed,
     Object? participants = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$ChatModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_$CreateChatRequestModelImpl(
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      message: freezed == message
-          ? _value._message
-          : message // ignore: cast_nullable_to_non_nullable
+      messenger: freezed == messenger
+          ? _value._messenger
+          : messenger // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       participants: freezed == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>?,
+              as List<Map<String, dynamic>?>?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -175,40 +169,39 @@ class __$$ChatModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ChatModelImpl implements _ChatModel {
-  _$ChatModelImpl(
-      {this.id,
+class _$CreateChatRequestModelImpl implements _CreateChatRequestModel {
+  _$CreateChatRequestModelImpl(
+      {this.image =
+          'https://lh3.googleusercontent.com/a/ACg8ocLpZDs6ksBQqGLbA725ZVNXmHoAU6d1sK6DHEJFdbZA-dPGweI=s96-c',
+      final List<String>? messenger,
       this.name,
-      this.image,
-      final List<String>? message,
-      final List<UserModel>? participants,
+      final List<Map<String, dynamic>?>? participants,
       this.createdAt,
       this.updatedAt})
-      : _message = message,
+      : _messenger = messenger,
         _participants = participants;
 
-  factory _$ChatModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ChatModelImplFromJson(json);
+  factory _$CreateChatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateChatRequestModelImplFromJson(json);
 
   @override
-  final String? id;
-  @override
-  final String? name;
-  @override
+  @JsonKey()
   final String? image;
-  final List<String>? _message;
+  final List<String>? _messenger;
   @override
-  List<String>? get message {
-    final value = _message;
+  List<String>? get messenger {
+    final value = _messenger;
     if (value == null) return null;
-    if (_message is EqualUnmodifiableListView) return _message;
+    if (_messenger is EqualUnmodifiableListView) return _messenger;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
-  final List<UserModel>? _participants;
   @override
-  List<UserModel>? get participants {
+  final String? name;
+  final List<Map<String, dynamic>?>? _participants;
+  @override
+  List<Map<String, dynamic>?>? get participants {
     final value = _participants;
     if (value == null) return null;
     if (_participants is EqualUnmodifiableListView) return _participants;
@@ -223,18 +216,18 @@ class _$ChatModelImpl implements _ChatModel {
 
   @override
   String toString() {
-    return 'ChatModel(id: $id, name: $name, image: $image, message: $message, participants: $participants, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CreateChatRequestModel(image: $image, messenger: $messenger, name: $name, participants: $participants, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChatModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
+            other is _$CreateChatRequestModelImpl &&
             (identical(other.image, image) || other.image == image) &&
-            const DeepCollectionEquality().equals(other._message, _message) &&
+            const DeepCollectionEquality()
+                .equals(other._messenger, _messenger) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants) &&
             (identical(other.createdAt, createdAt) ||
@@ -247,10 +240,9 @@ class _$ChatModelImpl implements _ChatModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      name,
       image,
-      const DeepCollectionEquality().hash(_message),
+      const DeepCollectionEquality().hash(_messenger),
+      name,
       const DeepCollectionEquality().hash(_participants),
       createdAt,
       updatedAt);
@@ -258,46 +250,44 @@ class _$ChatModelImpl implements _ChatModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChatModelImplCopyWith<_$ChatModelImpl> get copyWith =>
-      __$$ChatModelImplCopyWithImpl<_$ChatModelImpl>(this, _$identity);
+  _$$CreateChatRequestModelImplCopyWith<_$CreateChatRequestModelImpl>
+      get copyWith => __$$CreateChatRequestModelImplCopyWithImpl<
+          _$CreateChatRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChatModelImplToJson(
+    return _$$CreateChatRequestModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ChatModel implements ChatModel {
-  factory _ChatModel(
-      {final String? id,
+abstract class _CreateChatRequestModel implements CreateChatRequestModel {
+  factory _CreateChatRequestModel(
+      {final String? image,
+      final List<String>? messenger,
       final String? name,
-      final String? image,
-      final List<String>? message,
-      final List<UserModel>? participants,
+      final List<Map<String, dynamic>?>? participants,
       final DateTime? createdAt,
-      final DateTime? updatedAt}) = _$ChatModelImpl;
+      final DateTime? updatedAt}) = _$CreateChatRequestModelImpl;
 
-  factory _ChatModel.fromJson(Map<String, dynamic> json) =
-      _$ChatModelImpl.fromJson;
+  factory _CreateChatRequestModel.fromJson(Map<String, dynamic> json) =
+      _$CreateChatRequestModelImpl.fromJson;
 
-  @override
-  String? get id;
-  @override
-  String? get name;
   @override
   String? get image;
   @override
-  List<String>? get message;
+  List<String>? get messenger;
   @override
-  List<UserModel>? get participants;
+  String? get name;
+  @override
+  List<Map<String, dynamic>?>? get participants;
   @override
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$ChatModelImplCopyWith<_$ChatModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CreateChatRequestModelImplCopyWith<_$CreateChatRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

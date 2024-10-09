@@ -19,6 +19,12 @@ _$CreateUserRequestModelImpl _$$CreateUserRequestModelImplFromJson(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$CreateUserRequestModelImplToJson(
@@ -30,4 +36,6 @@ Map<String, dynamic> _$$CreateUserRequestModelImplToJson(
       'status': instance.status,
       'avatar': instance.avatar,
       'friends': instance.friends,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
     };

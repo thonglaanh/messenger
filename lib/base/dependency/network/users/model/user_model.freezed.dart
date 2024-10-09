@@ -27,6 +27,8 @@ mixin _$UserModel {
   bool? get status => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
   List<String>? get friends => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +48,9 @@ abstract class $UserModelCopyWith<$Res> {
       String? email,
       bool? status,
       String? avatar,
-      List<String>? friends});
+      List<String>? friends,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -69,6 +73,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? status = freezed,
     Object? avatar = freezed,
     Object? friends = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -99,6 +105,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.friends
           : friends // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -118,7 +132,9 @@ abstract class _$$UserModelImplCopyWith<$Res>
       String? email,
       bool? status,
       String? avatar,
-      List<String>? friends});
+      List<String>? friends,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -139,6 +155,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? avatar = freezed,
     Object? friends = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: freezed == id
@@ -169,6 +187,14 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value._friends
           : friends // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -183,7 +209,9 @@ class _$UserModelImpl implements _UserModel {
       this.email,
       this.status,
       this.avatar,
-      final List<String>? friends})
+      final List<String>? friends,
+      this.createdAt,
+      this.updatedAt})
       : _friends = friends;
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -212,8 +240,13 @@ class _$UserModelImpl implements _UserModel {
   }
 
   @override
+  final DateTime? createdAt;
+  @override
+  final DateTime? updatedAt;
+
+  @override
   String toString() {
-    return 'UserModel(id: $id, displayName: $displayName, phoneNumber: $phoneNumber, email: $email, status: $status, avatar: $avatar, friends: $friends)';
+    return 'UserModel(id: $id, displayName: $displayName, phoneNumber: $phoneNumber, email: $email, status: $status, avatar: $avatar, friends: $friends, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -229,13 +262,26 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            const DeepCollectionEquality().equals(other._friends, _friends));
+            const DeepCollectionEquality().equals(other._friends, _friends) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, displayName, phoneNumber,
-      email, status, avatar, const DeepCollectionEquality().hash(_friends));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      displayName,
+      phoneNumber,
+      email,
+      status,
+      avatar,
+      const DeepCollectionEquality().hash(_friends),
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -259,7 +305,9 @@ abstract class _UserModel implements UserModel {
       final String? email,
       final bool? status,
       final String? avatar,
-      final List<String>? friends}) = _$UserModelImpl;
+      final List<String>? friends,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -278,6 +326,10 @@ abstract class _UserModel implements UserModel {
   String? get avatar;
   @override
   List<String>? get friends;
+  @override
+  DateTime? get createdAt;
+  @override
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

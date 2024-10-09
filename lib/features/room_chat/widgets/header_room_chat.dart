@@ -9,9 +9,9 @@ import 'package:messenger/shared/widgets/icon_button/app_icon_button.dart';
 import 'package:messenger/shared/widgets/texts/app_text_style.dart';
 
 class HeaderRoomChat extends ConsumerWidget {
-  final String? userName;
+  final String? name;
   final String? avatar;
-  const HeaderRoomChat({super.key, this.avatar, this.userName});
+  const HeaderRoomChat({super.key, this.avatar, this.name});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -20,17 +20,17 @@ class HeaderRoomChat extends ConsumerWidget {
       child: Row(
         children: [
           AppIconButton(
-            icon: IconConstants.backArrow,
+            icon: IconConstants.leftArrow,
             onTap: () {},
-            backgroundColor: CupertinoColors.white,
           ),
-          SizedBoxConstants.w20,
+          SizedBoxConstants.w12,
           AppAvatarCircle(url: avatar ?? '', size: 36),
           SizedBoxConstants.w12,
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                userName ?? '',
+                name ?? '',
                 style: AppTextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
@@ -50,13 +50,11 @@ class HeaderRoomChat extends ConsumerWidget {
           AppIconButton(
             icon: IconConstants.phone,
             onTap: () {},
-            backgroundColor: CupertinoColors.white,
           ),
-          SizedBoxConstants.w20,
+          SizedBoxConstants.w12,
           AppIconButton(
             icon: IconConstants.callVideo,
             onTap: () {},
-            backgroundColor: CupertinoColors.white,
           ),
         ],
       ),

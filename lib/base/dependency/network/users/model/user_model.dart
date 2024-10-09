@@ -13,6 +13,8 @@ class UserModel with _$UserModel {
     bool? status,
     String? avatar,
     List<String>? friends,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

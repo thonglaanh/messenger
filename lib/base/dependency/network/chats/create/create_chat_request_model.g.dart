@@ -1,20 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_model.dart';
+part of 'create_chat_request_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ChatModelImpl _$$ChatModelImplFromJson(Map<String, dynamic> json) =>
-    _$ChatModelImpl(
-      id: json['id'] as String?,
+_$CreateChatRequestModelImpl _$$CreateChatRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CreateChatRequestModelImpl(
+      image: json['image'] as String? ??
+          'https://lh3.googleusercontent.com/a/ACg8ocLpZDs6ksBQqGLbA725ZVNXmHoAU6d1sK6DHEJFdbZA-dPGweI=s96-c',
+      messenger: (json['messenger'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       name: json['name'] as String?,
-      image: json['image'] as String?,
-      message:
-          (json['message'] as List<dynamic>?)?.map((e) => e as String).toList(),
       participants: (json['participants'] as List<dynamic>?)
-          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => e as Map<String, dynamic>?)
           .toList(),
       createdAt: json['createdAt'] == null
           ? null
@@ -24,12 +26,12 @@ _$ChatModelImpl _$$ChatModelImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$ChatModelImplToJson(_$ChatModelImpl instance) =>
+Map<String, dynamic> _$$CreateChatRequestModelImplToJson(
+        _$CreateChatRequestModelImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
       'image': instance.image,
-      'message': instance.message,
+      'messenger': instance.messenger,
+      'name': instance.name,
       'participants': instance.participants,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),

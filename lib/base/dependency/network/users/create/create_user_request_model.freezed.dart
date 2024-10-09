@@ -27,6 +27,8 @@ mixin _$CreateUserRequestModel {
   bool? get status => throw _privateConstructorUsedError;
   String? get avatar => throw _privateConstructorUsedError;
   List<String>? get friends => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +48,9 @@ abstract class $CreateUserRequestModelCopyWith<$Res> {
       String? email,
       bool? status,
       String? avatar,
-      List<String>? friends});
+      List<String>? friends,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -69,6 +73,8 @@ class _$CreateUserRequestModelCopyWithImpl<$Res,
     Object? status = freezed,
     Object? avatar = freezed,
     Object? friends = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       displayName: null == displayName
@@ -95,6 +101,14 @@ class _$CreateUserRequestModelCopyWithImpl<$Res,
           ? _value.friends
           : friends // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -114,7 +128,9 @@ abstract class _$$CreateUserRequestModelImplCopyWith<$Res>
       String? email,
       bool? status,
       String? avatar,
-      List<String>? friends});
+      List<String>? friends,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -136,6 +152,8 @@ class __$$CreateUserRequestModelImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? avatar = freezed,
     Object? friends = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$CreateUserRequestModelImpl(
       displayName: null == displayName
@@ -162,6 +180,14 @@ class __$$CreateUserRequestModelImplCopyWithImpl<$Res>
           ? _value._friends
           : friends // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -176,7 +202,9 @@ class _$CreateUserRequestModelImpl implements _CreateUserRequestModel {
       this.status = false,
       this.avatar =
           'https://lh3.googleusercontent.com/a/ACg8ocLpZDs6ksBQqGLbA725ZVNXmHoAU6d1sK6DHEJFdbZA-dPGweI=s96-c',
-      final List<String>? friends = const []})
+      final List<String>? friends = const [],
+      this.createdAt,
+      this.updatedAt})
       : _friends = friends;
 
   factory _$CreateUserRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -206,8 +234,13 @@ class _$CreateUserRequestModelImpl implements _CreateUserRequestModel {
   }
 
   @override
+  final DateTime? createdAt;
+  @override
+  final DateTime? updatedAt;
+
+  @override
   String toString() {
-    return 'CreateUserRequestModel(displayName: $displayName, phoneNumber: $phoneNumber, email: $email, status: $status, avatar: $avatar, friends: $friends)';
+    return 'CreateUserRequestModel(displayName: $displayName, phoneNumber: $phoneNumber, email: $email, status: $status, avatar: $avatar, friends: $friends, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -222,13 +255,25 @@ class _$CreateUserRequestModelImpl implements _CreateUserRequestModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            const DeepCollectionEquality().equals(other._friends, _friends));
+            const DeepCollectionEquality().equals(other._friends, _friends) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, displayName, phoneNumber, email,
-      status, avatar, const DeepCollectionEquality().hash(_friends));
+  int get hashCode => Object.hash(
+      runtimeType,
+      displayName,
+      phoneNumber,
+      email,
+      status,
+      avatar,
+      const DeepCollectionEquality().hash(_friends),
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -252,7 +297,9 @@ abstract class _CreateUserRequestModel implements CreateUserRequestModel {
       final String? email,
       final bool? status,
       final String? avatar,
-      final List<String>? friends}) = _$CreateUserRequestModelImpl;
+      final List<String>? friends,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$CreateUserRequestModelImpl;
 
   factory _CreateUserRequestModel.fromJson(Map<String, dynamic> json) =
       _$CreateUserRequestModelImpl.fromJson;
@@ -269,6 +316,10 @@ abstract class _CreateUserRequestModel implements CreateUserRequestModel {
   String? get avatar;
   @override
   List<String>? get friends;
+  @override
+  DateTime? get createdAt;
+  @override
+  DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$CreateUserRequestModelImplCopyWith<_$CreateUserRequestModelImpl>

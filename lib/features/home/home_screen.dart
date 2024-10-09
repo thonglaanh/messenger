@@ -29,6 +29,7 @@ class HomeScreen extends ConsumerWidget {
           builder: (context) {
             final avatar = appBloc.userSubject.value?.avatar ?? '';
             final listUsers = bloc.listUsersSubject.value;
+            final listChats = bloc.listChatsSubject.value;
             return Column(
               children: [
                 //header
@@ -52,11 +53,15 @@ class HomeScreen extends ConsumerWidget {
                           AppIconButton(
                             onTap: () {},
                             icon: IconConstants.note,
+                            backgroundColor: ColorConstants.gray200,
+                            padding: EdgeInsetsConstants.all10,
                           ),
                           SizedBoxConstants.w12,
                           AppIconButton(
                             onTap: () {},
                             icon: IconConstants.camera,
+                            backgroundColor: ColorConstants.gray200,
+                            padding: EdgeInsetsConstants.all10,
                           ),
                         ],
                       ),
@@ -105,23 +110,22 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: listUsers.length,
+                    itemCount: listChats.length,
                     itemBuilder: (context, index) {
-                      final user = listUsers[index];
-                      print(user.id);
+                      final chat = listChats[index];
                       return ItemChat(
                         onTap: () {
-                          bloc.onTapRoomChat(user.id ?? '');
+                          bloc.onTapRoomChat(chat.id ?? '');
                         },
                         avatar: AppAvatarCircle(
-                          url: user.avatar ?? '',
+                          url: chat.image ?? '',
                           size: 60,
-                          isOnline: user.status,
+                          isOnline: true,
                         ),
-                        name: user.displayName ?? '',
+                        name: chat.name ?? '',
                         lastMessage: 'You : Ok, see you later',
                         time: '9:25 AM',
-                        url: user.avatar,
+                        url: chat.image,
                         messageStatus: MessageStatusEnum.sent,
                       );
                     },

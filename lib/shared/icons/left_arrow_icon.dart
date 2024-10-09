@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/shared/icons/base/svg_icon.dart';
 
-class LikeIcon extends StatelessWidget {
+class LeftArrowIcon extends StatelessWidget {
   final double? width;
   final String assetName;
   final Color? color;
 
-  const LikeIcon({
+  const LeftArrowIcon({
     super.key,
     this.width,
     this.color,
-    this.assetName = 'like',
+    this.assetName = 'left_arrow',
   });
 
   @override
