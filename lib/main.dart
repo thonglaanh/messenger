@@ -5,13 +5,18 @@ import 'package:messenger/base/dependency/app_service.dart';
 import 'package:messenger/base/dependency/local_storage/local_storage_service.dart';
 import 'package:messenger/base/dependency/router/utils/route_name.dart';
 import 'package:messenger/base/dependency/router/utils/route_page.dart';
+import 'package:messenger/base/dependency/sqflite/sqflite_service.dart';
 import 'package:messenger/firebase_options.dart';
 import 'package:messenger/shared/utilities/fcm.dart';
 
 Future<void> initDependencies() async {
   final localStorage = LocalStorageService();
   await localStorage.initialize();
+  final sqlite = SqfLiteService();
+  await sqlite.initialize();
+
   AppService.localStorage = Provider((ref) => localStorage);
+  AppService.sqlite = Provider((ref) => sqlite);
 }
 
 Future<void> main() async {

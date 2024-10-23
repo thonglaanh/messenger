@@ -65,6 +65,8 @@ dev_dependencies:
   freezed: ^2.4.7
   build_runner: ^2.3.3
   json_serializable: ^6.8.0
+  sqflite: ^2.3.0
+  path_provider: ^2.1.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
