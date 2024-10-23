@@ -26,13 +26,14 @@ Future<void> main() async {
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
+
   @override
   Widget build(context, ref) {
     final routerService = ref.watch(AppService.router);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutePage.onGenerateRoute,
-      initialRoute: RouteName.login,
+      initialRoute: RouteName.unknown,
       navigatorKey: routerService.navigatorKey,
     );
   }

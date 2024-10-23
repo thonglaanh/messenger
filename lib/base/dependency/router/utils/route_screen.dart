@@ -11,6 +11,7 @@ import 'package:messenger/features/login/login_screen.dart';
 import 'package:messenger/features/room_chat/room_chat_bloc.dart';
 import 'package:messenger/features/room_chat/room_chat_screen.dart';
 import 'package:messenger/features/root/root_screen.dart';
+import 'package:messenger/features/unknown/unknown_bloc.dart';
 import 'package:messenger/features/unknown/unknown_screen.dart';
 
 class RouteScreen {
@@ -18,6 +19,7 @@ class RouteScreen {
         settings: settings,
         builder: (_) => const RootScreen(),
       );
+
   static PageRoute loginPageRoute(RouteSettings settings) {
     BlocProvider.login = createAutoDisposeBloc((ref) => LoginBloc(ref));
     return MaterialPageRoute(
@@ -53,6 +55,7 @@ class RouteScreen {
   }
 
   static PageRoute unknownPageRoute(RouteSettings settings) {
+    BlocProvider.unknown = createAutoDisposeBloc((ref) => UnknownBloc(ref));
     return MaterialPageRoute(
       settings: settings,
       builder: (_) => const UnknownScreen(),

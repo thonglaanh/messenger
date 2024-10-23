@@ -3,6 +3,7 @@ import 'package:messenger/features/friends/friends_bloc.dart';
 import 'package:messenger/features/home/home_bloc.dart';
 import 'package:messenger/features/login/login_bloc.dart';
 import 'package:messenger/features/room_chat/room_chat_bloc.dart';
+import 'package:messenger/features/unknown/unknown_bloc.dart';
 import 'package:messenger/shared/bloc/app_bloc.dart';
 
 class BlocProvider {
@@ -11,4 +12,5 @@ class BlocProvider {
   static late AutoDisposeProvider<HomeBloc> home;
   static late AutoDisposeProvider<FriendsBloc> friends;
   static late AutoDisposeProvider<RoomChatBloc> roomChat;
+  static late AutoDisposeProvider<UnknownBloc> unknown;
 }
