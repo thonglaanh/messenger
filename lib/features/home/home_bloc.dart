@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -21,6 +19,7 @@ class HomeBloc extends BlocBase {
   late final appBloc = ref.watch(BlocProvider.app);
   late final networkService = ref.watch(AppService.network);
   late final localStorageService = ref.watch(AppService.localStorage);
+
   //
   final searchController = TextEditingController();
   final listUsersSubject = BehaviorSubject<List<UserModel>>.seeded([]);
@@ -29,14 +28,14 @@ class HomeBloc extends BlocBase {
   HomeBloc(this.ref) {
     _init();
   }
+
   Future<void> _init() async {
     final (users, userError) = await networkService.usersRepository.getUsers();
     final (chats, chatError) = await networkService.chatsRepository.getChats();
     if (userError != null ||
-            chatError != null ||
-            users == null
-        || chats == null
-        ) return;
+        chatError != null ||
+        users == null ||
+        chats == null) return;
     listUsersSubject.value = users..sort((a, b) => b.status ?? false ? 1 : -1);
     listChatsSubject.value = chats;
   }
@@ -58,17 +57,6 @@ class HomeBloc extends BlocBase {
     routerService.push(RouteInput.roomChat((id: id)));
   }
 
-  Future<String?> getNativeMessage() async {
-    const platform = MethodChannel('com.example.myapp/native');
-    try {
-      final String? result = await platform.invokeMethod('getNativeMessage');
-      return result;
-    }catch (e) {
-      return null;
-    }
-
-  }
-
   @override
   void dispose() {
     super.dispose();
@@ -76,5 +64,4 @@ class HomeBloc extends BlocBase {
     searchController.dispose();
     listChatsSubject.close();
   }
-
 }

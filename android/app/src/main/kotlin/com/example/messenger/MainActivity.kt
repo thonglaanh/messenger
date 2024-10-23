@@ -1,21 +1,18 @@
 package com.example.messenger
 
+import BatteryLevelChannel
+import com.example.messenger.method_channel.OpenSettingsChannel
+import com.example.messenger.method_channel.RingtoneMethodChannel
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugin.common.MethodChannel
 
-class MainActivity: FlutterActivity(){
-    private val CHANNEL = "com.example.myapp/native"
+class MainActivity : FlutterActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
-            if (call.method == "getNativeMessage") {
-                result.success("Hello from Android!")
-            } else {
-                result.notImplemented()
-            }
-        }
+        BatteryLevelChannel.init(flutterEngine.dartExecutor.binaryMessenger, this)
+        OpenSettingsChannel.init(flutterEngine.dartExecutor.binaryMessenger, this)
+        RingtoneMethodChannel.init(flutterEngine.dartExecutor.binaryMessenger, this)
     }
 
 }
