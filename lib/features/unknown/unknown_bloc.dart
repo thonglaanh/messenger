@@ -1,21 +1,12 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/bloc/bloc_base.dart';
+import 'package:messenger/base/dependency/app_service.dart';
 
 class UnknownBloc extends BlocBase {
   final Ref ref;
 
-  UnknownBloc(this.ref) {
-    handleGetBatteryLevel();
-  }
+  late final sqliteService = ref.watch(AppService.sqlite);
 
-  Future<void> handleGetBatteryLevel() async {
-    const platform = MethodChannel('battery_level');
-    try {
-      final battery = await platform.invokeMethod('getBatteryLevel');
-      print(battery);
-    } on PlatformException catch (e) {
-      print(e);
-    }
-  }
+  UnknownBloc(this.ref);
+
 }
