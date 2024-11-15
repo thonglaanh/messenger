@@ -39,7 +39,6 @@ class UnknownBloc extends BlocBase {
     }
 
     if (canCheckBiometric || isBiometricAvailable) {
-      biometricService.openSettingsBiometric();
       print('Biometric not available');
       return;
     }

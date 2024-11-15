@@ -12,7 +12,7 @@ class UnknownScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text('Opps')),
       body: GestureDetector(
         onTap: bloc.onTapBiometric,
-        child: const Column(
+        child: Column(
           children: [Text('Opps')],
         ),
       ),

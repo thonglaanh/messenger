@@ -1,0 +1,38 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:messenger/base/dependency/firebase/firestore_service.dart';
+import 'package:messenger/base/dependency/network/extensions/response_extension.dart';
+import 'package:messenger/base/dependency/network/room_chat/create/create_room_chat_request_model.dart';
+import 'package:messenger/base/dependency/network/room_chat/model/room_chat_model.dart';
+
+class RoomChatRepository {
+  final FireStoreService fireStoreService;
+
+  RoomChatRepository(this.fireStoreService);
+
+  Future<(List<RoomChatModel>?, Object?)> getChats() async {
+    final (response, err) = await fireStoreService.getCollection('chats');
+    return (
+      ResponseExtension.convertQueryToModels(response, RoomChatModel.fromJson),
+      err
+    );
+  }
+
+  Future<(RoomChatModel?, Object?)> getChat({required String uid}) async {
+    final (response, err) =
+        await fireStoreService.getDocument(collection: 'chats', uid: uid);
+    if (err != null || response == null) return (null, err);
+    return (
+      ResponseExtension.convertDocumentToModel(
+          doc: response.data(),fromJson:  RoomChatModel.fromJson,id: response.id),
+      err
+    );
+  }
+
+  Future<(DocumentReference?, Object?)> createChat({
+    required CreateRoomChatRequestModel request,
+  }) async {
+    final (response, err) =
+        await fireStoreService.postDocument('chats', data: request.toJson());
+    return (response, err);
+  }
+}
