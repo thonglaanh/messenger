@@ -1,0 +1,16 @@
+import 'package:cloud_functions/cloud_functions.dart';
+
+Future<List<dynamic>> fetchMessagesWithUserData(String chatId) async {
+  try {
+    final HttpsCallable callable =
+        FirebaseFunctions.instance.httpsCallable('getMessagesWithUserData');
+    final response = await callable.call(<String, dynamic>{
+      'chatId': chatId,
+    });
+    return response
+        .data; // Trả về danh sách tin nhắn cùng với thông tin người dùng
+  } catch (e) {
+    print("Error fetching messages: $e");
+    return [];
+  }
+}

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:messenger/base/dependency/app_service.dart';
 import 'package:messenger/base/dependency/local_storage/local_storage_service.dart';
@@ -35,6 +36,10 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(context, ref) {
     final routerService = ref.watch(AppService.router);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutePage.onGenerateRoute,

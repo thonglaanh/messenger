@@ -1,0 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+typedef FromJson<T> = T Function(Map<String, dynamic> json);
+
+class ResponseExtension {
+  static T? convertDocumentToModel<T>(
+      { Map<String, dynamic>? doc,
+      required FromJson<T> fromJson,
+      required String id}) {
+    if (doc != null) {
+      return fromJson({'id': id}..addAll(doc));
+    }
+    return null;
+  }
+
+  static List<T> convertQueryToModels<T>(
+      QuerySnapshot<Map<String, dynamic>>? snapshot, FromJson<T> fromJson) {
+    if (snapshot == null) {
+      return [];
+    }
+    return snapshot.docs
+        .map((doc) => fromJson({'id': doc.id}..addAll(doc.data())))
+        .toList();
+  }
+}
